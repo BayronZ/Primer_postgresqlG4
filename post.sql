@@ -55,3 +55,48 @@ SELECT * FROM post;
 INSERT INTO post (userName, craetedAt, content, descripcion, title)
 VALUES('Carlos', '2022-04-08', 'asdf', 'ghjk', 'qwerty');
 SELECT * FROM post;
+
+-- Parte 2
+-- 1. Crear una nueva tabla llamada “comentarios”, con los atributos id, fecha, hora de
+-- creación y contenido, que se relacione con la tabla posts. (1 Punto)
+CREATE TABLE comentarios(
+    id SERIAL,
+    post_id INT,
+    craetedAt DATE,
+    content VARCHAR,
+    FOREIGN KEY (post_id) REFERENCES post (id)
+);
+\dt
+-- 2. Crear 2 comentarios para el post de "Pamela" y 4 para "Carlos". (0.4 Puntos)
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(1, '2021-05-10 15:16:13','Los shinobis solo comen manzanas');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(1, '2021-05-11 10:00:24', 'A nadie le gustan las manzanas');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(6, '2021-05-11 09:00:00', 'no y tu manzana');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(6, '2021-05-12 12:00:00', 'dejate de hablar como melon');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(6, '2021-05-12 13:00:00', 'dejate de hablar como sandia');
+INSERT INTO comentarios(post_id, craetedAt,content)
+VALUES(6, '2021-05-12 14:00:00', 'dejate de hablar como higo');
+SELECT * FROM comentarios;
+
+-- 3. Crear un nuevo post para "Margarita". (1 Punto)
+INSERT INTO post(userName, craetedAt,content, descripcion, title)
+VALUES('MARGARITA', '2021-05-12 14:00:00', 'dejate de hablar como palta', 'cuesco', 'rayuela');
+SELECT * FROM post;
+-- 4. Ingresar 5 comentarios para el post de Margarita. (1 Punto)
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(7, '2021-05-10 15:16:13','eat corn');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(7, '2021-05-11 10:00:24', 'eat apple');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(7, '2021-05-11 09:00:00', 'eat pear');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(7, '2021-05-12 12:00:00', 'eat watermelon');
+INSERT INTO comentarios(post_id, craetedAt, content)
+VALUES(7, '2021-05-12 13:00:00', 'eat lamb');
+SELECT * from comentarios;
+
+
